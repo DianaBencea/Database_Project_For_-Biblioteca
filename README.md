@@ -21,7 +21,7 @@ Database Queries
 DDL (Data Definition Language)
 The following instructions were written in the scope of CREATING the structure of the database (CREATE INSTRUCTIONS)
 
-  Create database Library;
+    Create database Library;
   
   create table Book(
   bookCode varchar (20) primary key not null,
