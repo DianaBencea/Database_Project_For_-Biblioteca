@@ -23,15 +23,15 @@ The following instructions were written in the scope of CREATING the structure o
 
     Create database Library;
   
-  create table Book(
-  bookCode varchar (20) primary key not null,
-  BookName varchar (50) not null,
-  Author varchar (30) not null,
-  NumberOfBooks numeric(5) not null,
-  Price numeric (5) not null,
-  PublisherCode varchar(25) not null,
-  Year numeric (4)not null
-  );
+      create table Book(
+      bookCode varchar (20) primary key not null,
+      BookName varchar (50) not null,
+      Author varchar (30) not null,
+      NumberOfBooks numeric(5) not null,
+      Price numeric (5) not null,
+      PublisherCode varchar(25) not null,
+      Year numeric (4)not null
+      );
   
   create table PublishingHouse (
   PublisherCode varchar(25) primary key not null,
