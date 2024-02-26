@@ -33,31 +33,31 @@ The following instructions were written in the scope of CREATING the structure o
       Year numeric (4)not null
       );
   
-  create table PublishingHouse (
-  PublisherCode varchar(25) primary key not null,
-  PublisherName varchar(13) not null,
-  Adress varchar(40) not null,
-  Telephone varchar(10) not null
+      create table PublishingHouse (
+      PublisherCode varchar(25) primary key not null,
+      PublisherName varchar(13) not null,
+      Adress varchar(40) not null,
+      Telephone varchar(10) not null
 
-  );
+      );
 
-  create table Reader (
-  CNP numeric(13) NOT null,
-  FirstName varchar (20) not null,
-  LastName varchar(40) not null,
-  City varchar (35) not null,
-  Email varchar(30),
-  Adress varchar (45),
-  Telephone varchar(10)
+      create table Reader (
+      CNP numeric(13) NOT null,
+      FirstName varchar (20) not null,
+      LastName varchar(40) not null,
+      City varchar (35) not null,
+      Email varchar(30),
+      Adress varchar (45),
+      Telephone varchar(10)
 
-  );
+      );
 
-  create table ReadingSheet(
-  FileCode varchar (20) primary key not null,
-  bookCode varchar (20),
-  CNP numeric(13) NOT null,
-  LoanDate date 
-  );
+      create table ReadingSheet(
+      FileCode varchar (20) primary key not null,
+      bookCode varchar (20),
+      CNP numeric(13) NOT null,
+      LoanDate date 
+      );
 
 
 After the database and the tables have been created, a few ALTER instructions were written in order to update the structure of the database, as described below:
