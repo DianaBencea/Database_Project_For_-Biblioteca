@@ -12,18 +12,52 @@ Database Schema
 You can find below the database schema that was generated through Reverse Engineer and which contains all the tables and the relationships between them.
 The tables are connected in the following way:
 
-**nume tabela 1** is connected with **nume tabela 2** through a **tip relatie** relationship which was implemented through **nume_tabela.nume_coloana_cheie_primara** as a primary key and **nume_tabela.nume_coloana_cheie_secundara** as a foreign key
-**nume tabela 3** is connected with **nume tabela 4** through a **tip relatie** relationship which was implemented through **nume_tabela.nume_coloana_cheie_primara** as a primary key and **nume_tabela.nume_coloana_cheie_secundara** as a foreign key
-**nume tabela 5** is connected with **nume tabela 6** through a **tip relatie** relationship which was implemented through **nume_tabela.nume_coloana_cheie_primara** as a primary key and **nume_tabela.nume_coloana_cheie_secundara** as a foreign key
-...........
-**nume tabela n** is connected with **nume tabela n+1** through a **tip relatie** relationship which was implemented through **nume_tabela.nume_coloana_cheie_primara** as a primary key and **nume_tabela.nume_coloana_cheie_secundara** as a foreign key
+**Table Book ** is connected with **Table ReadingSheet** through a **one to one** relationship which was implemented through **Reader.bookCode** as a primary key and **ReadingSheet.bookCode** as a foreign key
+**Table PublishingHouse** is connected with **Table Book** through a **one to one** relationship which was implemented through ** PublishingHouse. PublisherCode** as a primary key and **Book.PublisherCode** as a foreign key
+**Table Readerr** is connected with **Tabela ReadingSheet** through a **one to one** relationship which was implemented through **Reader.CNP** as a primary key and **ReadingSheet.CNP** as a foreign key
 
 Database Queries
 
 DDL (Data Definition Language)
 The following instructions were written in the scope of CREATING the structure of the database (CREATE INSTRUCTIONS)
 
-Inserati aici toate instructiunile de CREATE pe care le-ati scris, atat create database cat si create table
+  Create database Library;
+  
+  create table Book(
+  bookCode varchar (20) primary key not null,
+  BookName varchar (50) not null,
+  Author varchar (30) not null,
+  NumberOfBooks numeric(5) not null,
+  Price numeric (5) not null,
+  PublisherCode varchar(25) not null,
+  Year numeric (4)not null
+  );
+  
+  create table PublishingHouse (
+  PublisherCode varchar(25) primary key not null,
+  PublisherName varchar(13) not null,
+  Adress varchar(40) not null,
+  Telephone varchar(10) not null
+
+  );
+
+  create table Reader (
+  CNP numeric(13) NOT null,
+  FirstName varchar (20) not null,
+  LastName varchar(40) not null,
+  City varchar (35) not null,
+  Email varchar(30),
+  Adress varchar (45),
+  Telephone varchar(10)
+
+  );
+
+  create table ReadingSheet(
+  FileCode varchar (20) primary key not null,
+  bookCode varchar (20),
+  CNP numeric(13) NOT null,
+  LoanDate date 
+  );
 
 
 After the database and the tables have been created, a few ALTER instructions were written in order to update the structure of the database, as described below:
