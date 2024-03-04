@@ -56,7 +56,9 @@ The following instructions were written in the scope of CREATING the structure o
 
 After the database and the tables have been created, a few ALTER instructions were written in order to update the structure of the database, as described below:
 
-Inserati aici toate instructiunile de ALTER pe care le-ati scris. Incercati sa includeti instructiuni cat mai variate cum ar fi: - schimbare nume tabela - adaugare sau stergere coloana - redenumire coloana - adaugare proprietati coloana (ex: adaugare auto-increment) - modificare proprietati coloana (ex: modificare tip de data, modificare pozitie coloana etc) - adaugare cheie primara sau secundara (daca nu a fost deja adaugata la crearea tabelei)
+    alter table reader add fax varchar(12);
+    alter table reader modify fax char(10);
+    alter table reader drop column fax;
 
 DML (Data Manipulation Language)
 In order to be able to use the database I populated the tables with various data necessary in order to perform queries and manipulate the data. In the testing process, this necessary data is identified in the Test Design phase and created in the Test Implementation phase.
@@ -112,8 +114,11 @@ Below you can find all the insert instructions that were created in the scope of
     values('6', '5','1900505465343', '1990-05-05');
 
 After the insert, in order to prepare the data to be better suited for the testing process, I updated some data in the following way:
+  
+    update reader set city = 'Constanta' where FirstName = 'Popescu';
+    update reader set lastName = 'Elena' where CNP like'%112';
+    update book set price = '99' where PublisherCode = '5';
 
-Inserati aici toate instructiunile de UPDATE pe care le-ati scris folosind filtrarile necesare astfel incat sa actualizati doar datele de care aveti nevoie
 
 DQL (Data Query Language)
 After the testing process, I deleted the data that was no longer relevant in order to preserve the database clean:
@@ -121,21 +126,38 @@ After the testing process, I deleted the data that was no longer relevant in ord
     delete from Reader where CNP='2880204465223';
 
 In order to simulate various scenarios that might happen in real life I created the following queries that would cover multiple potential real-life situations:
+    select * from reader
+    where CNP like '%223';
+    
+    select * from reader
+    where CNP like '%223' and city = 'Iasi';
+    
+    select FirstName from reader
+    where CNP like '%223' or city = 'Iasi';
 
-Inserati aici toate instructiunile de SELECT pe care le-ati scris folosind filtrarile necesare astfel incat sa extrageti doar datele de care aveti nevoie Incercati sa acoperiti urmatoarele:
-- where
-- AND
-- OR
-- NOT
-- like
-- inner join
-- left join
-- OPTIONAL: right join
-- OPTIONAL: cross join
-- functii agregate
-- group by
-- having
-- OPTIONAL DAR RECOMANDAT: Subqueries - nu au fost in scopul cursului. Puteti sa consultati tutorialul asta si daca nu intelegeti ceva contactati fie trainerul, fie coordonatorul de grupa
+    Select firstName, LastName  from Reader
+    where city = "Iasi";
 
-Conclusions
-Inserati aici o concluzie cu privire la ceea ce ati lucrat, gen lucrurile pe care le-ati invatat, lessons learned, un rezumat asupra a ceea ce ati facut si orice alta informatie care vi se pare relevanta pentru o concluzie finala asupra 
+
+    select bookName, Author from book
+    where price> 50 and Year <1990;
+
+    select count (bookName) from book 
+    where year <1990;
+
+
+    select * from reader
+    left join ReadingSheet
+    on reader.CNP= ReadingSheet.CNP
+
+    select * from book
+    inner join PublishingHouse
+    on book.PublisherCode= PublishingHouse.PublisherCode;
+
+    select BookName, Author, sum ( price) from book 
+    where PublisherCode>3
+    group by BookName, Author;
+
+    
+
+
