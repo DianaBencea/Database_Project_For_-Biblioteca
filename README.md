@@ -69,7 +69,54 @@ In order to be able to use the database I populated the tables with various data
 
 Below you can find all the insert instructions that were created in the scope of this project:
 
-Inserati aici toate instructiunile de INSERT pe care le-ati scris. Incercati sa folositi atat insert pe toate coloanele (fara sa precizati pe ce coloane se face insert) cat si insert pe cateva coloane (care necesita mentionarea explicita a coloanelor pe care se face insert). De asemenea, incercati sa acoperiti situatia in care inserati mai multe randuri in acelasi timp
+    -- insert data into Book table
+    insert into book values ('1', 'Poezii', 'Mihai Eminescu', '6', '30', '1', '1923');
+    insert into book values ('2', 'Ion', 'Liviu rebreanu', '4', '67', '2', '1948');
+    insert into book values ('3', 'Baltagul', 'Mihail sadoveanu', '5', '80', '4', '1992');
+    insert into book values ('4', 'Morometii', 'Marin Preda', '7', '56', '6', '1970');
+    insert into book values ('5', 'O noapte furtunoasa', 'Ioan Luca Caragiale', '6', '100', '3', '1999');
+    insert into book values ('6', 'Cuvinte Potrivite', 'Tudor Arghezi', '8', '63', '1', '1917');
+
+     -- insert data into PublishingHouse table
+    insert into PublishingHouse (PublisherCode, PublisherName, Adress, Telephone)
+    values('1', 'Corint', 'Bld Magheru nr 1', '0722745892');
+    insert into PublishingHouse (PublisherCode, PublisherName, Adress, Telephone)
+    values('2', 'Humanitas', 'Bld Iuliu Maniu nr 40', '0765453453');
+    insert into PublishingHouse (PublisherCode, PublisherName, Adress, Telephone)
+    values('3', 'Teora', 'Bld Marasesti nr 2A', '0745370812');
+    insert into PublishingHouse (PublisherCode, PublisherName, Adress, Telephone)
+    values('4', 'Litera', 'Bld Aviatorilor nr 16', '0744354323');
+    insert into PublishingHouse (PublisherCode, PublisherName, Adress, Telephone)
+    values('5', 'Libris', 'Bld Unirii nr 2', '0754532900');
+    insert into PublishingHouse (PublisherCode, PublisherName, Adress, Telephone)
+    values('6', 'Rao', 'Sos Pipera nr 8', '0754532900');
+
+    -- insert data into Reader table
+    insert into reader values
+    ('1900505465343','Vasilescu','Sergiu','Bucuresti', 'svasilescu@yahoo.com' ,'bld Ion Mihalache nr 5', '0723242567');
+    insert into reader values
+    ('1900808465343','Popescu','Mihai','Bucuresti', 'mpop@yahoo.com' ,'bld Iuliu Maniu nr 4', '0766786577');
+    insert into reader values
+    ('2770204465223','Vasile','Stefania','Brasov', 'stefi@yahoo.com' ,'bld Calea Bucuresti nr 70', '0721350908');
+    insert into reader values
+    ('2760204465112','Marin','Ioana','Brasov', 'yoyo@yahoo.com' ,'Sos Miahai Bravu nr 2', '0722228978'),
+    ('2880204465221','Manole','Madalina','Iasi', 'madatza@yahoo.com' ,'Str Primaverii nr 12', '0744765843'),
+    ('1880204465223','Marcu','Raducu','Iasi', 'mraducu@yahoo.com' ,'Str Lalelelor nr 44', '0787564323');
+
+
+    -- insert data into ReadingSheet table
+    insert into ReadingSheet( FileCode, bookCode, CNP, LoanDate)
+    values('1', '3','1880204465223', '1988-02-04');
+    insert into ReadingSheet( FileCode, bookCode, CNP, LoanDate)
+    values('2', '2','2880204465221', '1988-02-04');
+    insert into ReadingSheet( FileCode, bookCode, CNP, LoanDate)
+    values('3', '1','2760204465112', '1976-02-04');
+    insert into ReadingSheet( FileCode, bookCode, CNP, LoanDate)
+    values('4', '4','2770204465223', '1977-02-04');
+    insert into ReadingSheet( FileCode, bookCode, CNP, LoanDate)
+    values('5', '6','1900808465343', '1990-08-08');
+    insert into ReadingSheet( FileCode, bookCode, CNP, LoanDate)
+    values('6', '5','1900505465343', '1990-05-05');
 
 After the insert, in order to prepare the data to be better suited for the testing process, I updated some data in the following way:
 
