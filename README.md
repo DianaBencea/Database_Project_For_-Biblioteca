@@ -30,16 +30,13 @@ The following instructions were written in the scope of CREATING the structure o
       NumberOfBooks numeric(5) not null,
       Price numeric (5) not null,
       PublisherCode varchar(25) not null,
-      Year numeric (4)not null
-      );
+      Year numeric (4)not null);
   
       create table PublishingHouse (
       PublisherCode varchar(25) primary key not null,
       PublisherName varchar(13) not null,
       Adress varchar(40) not null,
-      Telephone varchar(10) not null
-
-      );
+      Telephone varchar(10) not null);
 
       create table Reader (
       CNP numeric(13) NOT null,
@@ -48,16 +45,13 @@ The following instructions were written in the scope of CREATING the structure o
       City varchar (35) not null,
       Email varchar(30),
       Adress varchar (45),
-      Telephone varchar(10)
-
-      );
+      Telephone varchar(10));
 
       create table ReadingSheet(
       FileCode varchar (20) primary key not null,
       bookCode varchar (20),
       CNP numeric(13) NOT null,
-      LoanDate date 
-      );
+      LoanDate date);
 
 
 After the database and the tables have been created, a few ALTER instructions were written in order to update the structure of the database, as described below:
@@ -66,7 +60,6 @@ Inserati aici toate instructiunile de ALTER pe care le-ati scris. Incercati sa i
 
 DML (Data Manipulation Language)
 In order to be able to use the database I populated the tables with various data necessary in order to perform queries and manipulate the data. In the testing process, this necessary data is identified in the Test Design phase and created in the Test Implementation phase.
-
 Below you can find all the insert instructions that were created in the scope of this project:
 
     -- insert data into Book table
@@ -125,7 +118,7 @@ Inserati aici toate instructiunile de UPDATE pe care le-ati scris folosind filtr
 DQL (Data Query Language)
 After the testing process, I deleted the data that was no longer relevant in order to preserve the database clean:
 
-Inserati aici toate instructiunile de DELETE pe care le-ati scris folosind filtrarile necesare astfel incat sa stergeti doar datele de care aveti nevoie
+    delete from Reader where CNP='2880204465223';
 
 In order to simulate various scenarios that might happen in real life I created the following queries that would cover multiple potential real-life situations:
 
