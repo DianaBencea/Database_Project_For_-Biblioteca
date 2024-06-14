@@ -126,7 +126,9 @@ After the testing process, I deleted the data that was no longer relevant in ord
     delete from Reader where CNP='2880204465223';
 
 In order to simulate various scenarios that might happen in real life I created the following queries that would cover multiple potential real-life situations:
-    select * from reader
+
+
+    Select * from reader
     where CNP like '%223';
     
     select * from reader
