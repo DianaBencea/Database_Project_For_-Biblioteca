@@ -1,4 +1,5 @@
-Database Project for Library
+# Database Project for Library
+
 The scope of this project is to use all the SQL knowledge gained throught the Software Testing course and apply them in practice.
 
 Application under test: Library
@@ -7,18 +8,25 @@ Tools used: MySQL Workbench
 
 
 
-Database Schema
+
+## Database Schema
+
 
 You can find below the database schema that was generated through Reverse Engineer and which contains all the tables and the relationships between them.
 The tables are connected in the following way:
+
+
+<img width="361" alt="image" src="https://github.com/DianaBencea/Database_Project_For_-Library/assets/151565785/cacfa02f-689f-4936-b3e9-ae4508a236a9">
+
 
 **Table Book ** is connected with **Table ReadingSheet** through a **one to one** relationship which was implemented through **Reader.bookCode** as a primary key and **ReadingSheet.bookCode** as a foreign key
 **Table PublishingHouse** is connected with **Table Book** through a **one to one** relationship which was implemented through ** PublishingHouse. PublisherCode** as a primary key and **Book.PublisherCode** as a foreign key
 **Table Readerr** is connected with **Tabela ReadingSheet** through a **one to one** relationship which was implemented through **Reader.CNP** as a primary key and **ReadingSheet.CNP** as a foreign key
 
-Database Queries
+## Database Queries
 
-DDL (Data Definition Language)
+## DDL (Data Definition Language)
+
 The following instructions were written in the scope of CREATING the structure of the database (CREATE INSTRUCTIONS)
 
     Create database Library;
@@ -60,7 +68,8 @@ After the database and the tables have been created, a few ALTER instructions we
     alter table reader modify fax char(10);
     alter table reader drop column fax;
 
-DML (Data Manipulation Language)
+## DML (Data Manipulation Language)
+
 In order to be able to use the database I populated the tables with various data necessary in order to perform queries and manipulate the data. In the testing process, this necessary data is identified in the Test Design phase and created in the Test Implementation phase.
 Below you can find all the insert instructions that were created in the scope of this project:
 
@@ -120,7 +129,8 @@ After the insert, in order to prepare the data to be better suited for the testi
     update book set price = '99' where PublisherCode = '5';
 
 
-DQL (Data Query Language)
+## DQL (Data Query Language)
+
 After the testing process, I deleted the data that was no longer relevant in order to preserve the database clean:
 
     delete from Reader where CNP='2880204465223';
@@ -128,37 +138,55 @@ After the testing process, I deleted the data that was no longer relevant in ord
 In order to simulate various scenarios that might happen in real life I created the following queries that would cover multiple potential real-life situations:
 
 
-    Select * from reader
-    where CNP like '%223';
-    
+afiseaza toate inregistrarile din tabela  reader, unde CNP-ul se termina cu cifrele 223 si orasul este Iasi
+
     select * from reader
     where CNP like '%223' and city = 'Iasi';
-    
+   
+afiseaza toate inregistrarile din tabela  reader, unde CNP-ul se termina cu cifrele 223 ori orasul este Iasi
+
+    select * from reader
+    where CNP like '%223' or city = 'Iasi';
+
+afiseaza Numele cititorilor din tabela  reader, unde CNP-ul se termina cu cifrele 223 ori cei care sunt din orasul Iasi
+
     select FirstName from reader
     where CNP like '%223' or city = 'Iasi';
+
+afiseaza Numele si Prenumele cititorilor  din tabela  reader, care locuiesc in orasul Iasi
 
     Select firstName, LastName  from Reader
     where city = "Iasi";
 
+afiseaza Numele cartii si autorul din tabela book pntru toate cartile care au pretul mai mare de 50 lei si anul aparitiei inainte de 1990
 
     select bookName, Author from book
     where price> 50 and Year <1990;
 
-    select count (bookName) from book 
+afiseaza cate carti gsesti in tabela book aparute inainte de 1990
+
+    select count(bookName) from book 
     where year <1990;
 
+afiseaza toate inregistrarile din tabelele book  si ReadingSheet sub forma unui singur tabel
 
     select * from reader
     left join ReadingSheet
-    on reader.CNP= ReadingSheet.CNP
+    on reader.CNP= ReadingSheet.CNP;
+
+afiseaza toate inregistrarile din tabelele book  si PublisingHouse sub forma unui singur tabel
 
     select * from book
     inner join PublishingHouse
     on book.PublisherCode= PublishingHouse.PublisherCode;
 
-    select BookName, Author, sum ( price) from book 
-    where PublisherCode>3
+
+afiseaza numele cartii, Autorul  si totalul preturilor din tabela book, unde codul editurii este 3
+
+    select BookName, Author, sum(price) from book 
+    where PublisherCode>'3'
     group by BookName, Author;
+
 
     
 
